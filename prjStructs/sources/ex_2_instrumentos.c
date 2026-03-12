@@ -9,7 +9,7 @@ struct instrumento {
 };
 
 int main() {
-  int i, n = 2;
+  int i, n = 5;
   float p = -1;
   Instrumento vetInstrumentos[n];
 
