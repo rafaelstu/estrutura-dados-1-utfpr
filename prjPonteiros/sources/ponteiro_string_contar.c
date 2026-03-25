@@ -1,20 +1,19 @@
 #include <stdio.h>
-#include <string.h>
 
-void contaChar(char *s,int *qtChar){
+void contaChar(char *s, int *qtChar) {
 
-while(*s!='\0'){
-        (*qtChar)++;
-        s++;
-    }
+  while (*s != '\0') {
+    (*qtChar)++;
+    s++;
+  }
 };
 
 int main() {
-    int qtChar=0;
-    char s[]="{10,20,30,40}";
+  int qtChar = 0;
+  char s[] = "{10,20,30,40}";
 
-    contaChar(s, &qtChar);
+  contaChar(s, &qtChar);
 
-    printf("tamanho str: %d", qtChar);
-    return 0;
+  printf("tamanho str: %d", qtChar);
+  return 0;
 }
