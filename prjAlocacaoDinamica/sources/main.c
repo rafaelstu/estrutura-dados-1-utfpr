@@ -1,47 +1,78 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
-void validarIntervalos(int *inf, int *sup) {
+int **alocaMatriz(int nLinhas, int nColunas) {
+  int **m, l;
+  // 1 - alocamos um vetor com um ponteiro para cada linha
+  m = (int **)malloc(nLinhas * sizeof(int *));
 
-  int j;
+  // 2 - fazemos cada ponteiro apontar para uma linha
+  for (l = 0; l < nLinhas; l++) {
+    m[l] = (int *)calloc(nColunas, sizeof(int));
+  }
 
-  if (sup > inf) {
-    j = *sup;
-    *sup = *inf;
-    *inf = j;
+  return m;
+}
+
+void valorizaMatriz(int **m, int nLinhas, int nColunas) {
+  for (int l = 0; l < nLinhas; l++) {
+    for (int c = 0; c < nColunas; c++) {
+      m[l][c] = rand() % 100;
+    }
   }
 }
 
-int *intervalo(int inf, int sup) {
-  int i, j;
-  int *v;
-
-  v = (int *)malloc(j * sizeof(int));
-  for (i = 0, j = inf + 1; j < sup; i++, j++) {
-    v[i] = j;
+int **somaMatrizes(int **m1, int **m2, int nLinhas, int nColunas) {
+  int **resultado = alocaMatriz(nLinhas, nColunas);
+  for (int l = 0; l < nLinhas; l++) {
+    for (int c = 0; c < nColunas; c++) {
+      resultado[l][c] = m1[l][c] + m2[l][c];
+    }
   }
+  return resultado;
+}
 
-  return v;
+void imprimeMatriz(int **m, int nLinhas, int nColunas) {
+  for (int l = 0; l < nLinhas; l++) {
+    for (int c = 0; c < nColunas; c++) {
+      // printf("%ld\t", &m[l][c]); exibe as posições dos ponteiros
+      printf("%d\t", m[l][c]);
+      // tambem poderia ser usado *(*(m+l)+c)
+    }
+    printf("\n");
+  }
+}
+
+void liberaMatriz(int **m, int nLinhas) {
+  for (int l = 0; l < nLinhas; l++) {
+    free(m[l]); // libera os vetores apontados por cada linha
+  }
+  free(m); // libera a matrzi como um trodo
 }
 
 int main() {
-  int inf, sup, i, j;
-  int *v;
+  srand(time(NULL));
+  int nLinhas = 3, nColunas = 3;
 
-  printf("informe o limite inferior: ");
-  scanf("%d", &inf);
+  int **matA = alocaMatriz(nLinhas, nColunas);
+  int **matB = alocaMatriz(nLinhas, nColunas);
 
-  printf("informe o limite superior: ");
-  scanf("%d", &sup);
+  valorizaMatriz(matA, nLinhas, nColunas);
+  valorizaMatriz(matB, nLinhas, nColunas);
 
-  validarIntervalos(&inf, &sup);
+  printf("Matriz A:\n");
+  imprimeMatriz(matA, nLinhas, nColunas);
+  printf("Matriz B:\n");
+  imprimeMatriz(matB, nLinhas, nColunas);
 
-  v = intervalo(inf, sup);
+  int **matSoma = somaMatrizes(matA, matB, nLinhas, nColunas);
+  printf("Matriz Soma (A + B):\n");
+  imprimeMatriz(matSoma, nLinhas, nColunas);
 
-  for (i = 0, j = inf + 1; j < sup; i++, j++) {
-    printf("p%d: %d\n", i, v[i]);
-  }
+  liberaMatriz(matA, nLinhas);
+  liberaMatriz(matB, nLinhas);
+  liberaMatriz(matSoma, nLinhas);
 
-  free(v);
   return 0;
 }
