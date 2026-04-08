@@ -9,8 +9,9 @@ Data *dataNova(int d, int m, int a);
 void imprimeData(Data *d);
 void liberaData(Data *d);
 
-Servico *adicionaServico(Servico *vet, char nome[], float valor, int n);
+Pessoa *adicionaServico(Pessoa *vet, int n, char nome[], float valor);
 void imprimeServicos(Servico *vet, int n);
+int getQtdServico(Pessoa *vet, int n);
 void liberaServicos(Servico *vet);
 
 Pessoa *adicionaPessoa(Pessoa *vet, char nome[], Data *d, int n);

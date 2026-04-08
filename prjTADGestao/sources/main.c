@@ -11,7 +11,7 @@ int main() {
   do {
     printf("informe o nome do contratante %d: ", nP + 1);
     setbuf(stdin, NULL);
-    scanf("%[^\n]s", nome);
+    scanf("%[^\n]", nome);
     printf("data de nascimento (dd/mm/aaaa): ");
     setbuf(stdin, NULL);
     scanf("%d/%d/%d", &d, &m, &a);
@@ -24,16 +24,14 @@ int main() {
       float valor;
 
       printf("informe o nome do servico contratado %d: ",
-             vetPessoas[nP].qtdServicos + 1);
+             getQtdServico(vetPessoas, nP) + 1);
       setbuf(stdin, NULL);
-      scanf("%[^\n]s", nomeS);
+      scanf("%[^\n]", nomeS);
 
       printf("valor: R$ ");
       scanf("%f", &valor);
 
-      vetPessoas[nP].servicos = adicionaServico(
-          vetPessoas[nP].servicos, nomeS, valor, vetPessoas[nP].qtdServicos);
-      vetPessoas[nP].qtdServicos++;
+      vetPessoas = adicionaServico(vetPessoas, nP, nomeS, valor);
 
       printf("informar outro servico? (1=sim/0=nao) ");
       scanf("%d", &c);

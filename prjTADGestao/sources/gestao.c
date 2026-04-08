@@ -29,19 +29,21 @@ Data *dataNova(int d, int m, int a) {
   return dt;
 }
 
-void imprimeData(Data *d) { printf("%d/%d/%d", d->d, d->m, d->a); }
+void imprimeData(Data *d) { printf("%02d/%02d/%04d", d->d, d->m, d->a); }
 
 void liberaData(Data *d) { free(d); }
 
-Servico *adicionaServico(Servico *vet, char nome[], float valor, int n) {
-  if (n == 0) {
-    vet = (Servico *)malloc(sizeof(Servico));
+Pessoa *adicionaServico(Pessoa *vet, int n, char nome[], float valor) {
+  if (vet[n].qtdServicos == 0) {
+    vet[n].servicos = (Servico *)malloc(sizeof(Servico));
   } else {
-    vet = (Servico *)realloc(vet, (n + 1) * sizeof(Servico));
+    vet[n].servicos = (Servico *)realloc(
+        vet[n].servicos, (vet[n].qtdServicos + 1) * sizeof(Servico));
   }
 
-  strcpy(vet[n].nome, nome);
-  vet[n].valor = valor;
+  strcpy(vet[n].servicos[vet[n].qtdServicos].nome, nome);
+  vet[n].servicos[vet[n].qtdServicos].valor = valor;
+  vet[n].qtdServicos++;
 
   return vet;
 }
@@ -51,6 +53,8 @@ void imprimeServicos(Servico *vet, int n) {
     printf(". %s - valor: R$ %.2f\n", vet[i].nome, vet[i].valor);
   }
 }
+
+int getQtdServico(Pessoa *vet, int n) { return vet[n].qtdServicos; }
 
 void liberaServicos(Servico *vet) { free(vet); }
 
