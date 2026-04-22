@@ -39,6 +39,23 @@ void adicionaItemFimLista(Lista *l, int chave) {
   l->vetItem[l->ultimo] = novoItem;
 }
 
+void adicionaItemQualquerPosicao(Lista *l, int chave, int posicao) {
+  if (posicao > MAXTAM || posicao < 0) {
+    printf("erro: posicao invalida\n");
+    return;
+  }
+
+  for (int i = l->ultimo; i >= posicao; i--) {
+    l->vetItem[i + 1] = l->vetItem[i];
+  }
+
+  Item novoItem;
+  novoItem.chave = chave;
+
+  l->vetItem[posicao] = novoItem;
+  l->ultimo++;
+}
+
 void imprimeLista(Lista *l) {
   for (int i = 0; i <= l->ultimo; i++) {
     printf("chave: %d\n", l->vetItem[i].chave);
