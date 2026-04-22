@@ -28,7 +28,7 @@ int main() {
 
   printf("adicionando 6º item\n");
   chave = 6;
-  adicionaItemQualquerPosicao(l, chave, 2);
+  adicionaItemQualquerPosicao(l, chave, 5);
 
   printf("\nitens na lista\n");
   imprimeLista(l);
