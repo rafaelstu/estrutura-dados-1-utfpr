@@ -40,7 +40,7 @@ void adicionaItemFimLista(Lista *l, int chave) {
 }
 
 void adicionaItemQualquerPosicao(Lista *l, int chave, int posicao) {
-  if (posicao > MAXTAM || posicao < 0) {
+  if (posicao > l->ultimo || posicao < 0) {
     printf("erro: posicao invalida\n");
     return;
   }
