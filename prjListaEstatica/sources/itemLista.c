@@ -39,6 +39,23 @@ void adicionaItemFimLista(Lista *l, int chave) {
   l->vetItem[l->ultimo] = novoItem;
 }
 
+void adicionaItemFimListaComValidacao(Lista *l, int chave) {
+  if (verificaListaCheia(l)) {
+    printf("erro: lista cheia.\n");
+    return;
+  }
+
+  if (buscaItemPorChave(l, chave) != -1) {
+    printf("erro: item ja existe.\n");
+    return;
+  }
+
+  Item novoItem;
+  novoItem.chave = chave;
+  l->ultimo++;
+  l->vetItem[l->ultimo] = novoItem;
+}
+
 void adicionaItemQualquerPosicao(Lista *l, int chave, int posicao) {
   if (verificaListaCheia(l)) {
     printf("erro: lista cheia.\n");

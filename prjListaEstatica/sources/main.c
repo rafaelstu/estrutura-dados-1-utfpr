@@ -39,6 +39,11 @@ int main() {
   printf("adicionando chave %d\n", chave);
   adicionaItemOrdenadoPorChave(l, chave);
 
+  adicionaItemFimListaComValidacao(l, chave);
+
+  chave = 10;
+  adicionaItemFimListaComValidacao(l, chave);
+
   printf("\nitens na lista\n");
   imprimeLista(l);
 
