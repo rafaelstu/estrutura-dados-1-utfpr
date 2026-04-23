@@ -16,19 +16,28 @@ int main() {
   adicionaItemFimLista(l, chave);
   chave = 3;
   adicionaItemFimLista(l, chave);
-  chave = 4;
+  chave = 7;
   adicionaItemFimLista(l, chave);
-  chave = 5;
+  chave = 9;
   adicionaItemFimLista(l, chave);
+  chave = 6;
+  adicionaItemQualquerPosicao(l, chave, 0);
+  ordenaListaPorChave(l);
 
   printf("\nitens na lista\n");
   imprimeLista(l);
 
-  printf("tentando adicionar o 6º item na 3ª posicao\n");
+  chave = 8;
+  printf("adicionando chave %d\n", chave);
+  adicionaItemOrdenadoPorChave(l, chave);
 
-  printf("adicionando 6º item\n");
-  chave = 6;
-  adicionaItemQualquerPosicao(l, chave, 5);
+  chave = 5;
+  printf("adicionando chave %d\n", chave);
+  adicionaItemOrdenadoPorChave(l, chave);
+
+  chave = 4;
+  printf("adicionando chave %d\n", chave);
+  adicionaItemOrdenadoPorChave(l, chave);
 
   printf("\nitens na lista\n");
   imprimeLista(l);

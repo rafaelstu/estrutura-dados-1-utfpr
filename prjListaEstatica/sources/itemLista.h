@@ -14,6 +14,8 @@ int verificaListaVazia(Lista *l);
 int verificaListaCheia(Lista *l);
 
 int buscaItemPorChave(Lista *l, int chave);
+void ordenaListaPorChave(Lista *l);
+void adicionaItemOrdenadoPorChave(Lista *l, int chave);
 
 void imprimeLista(Lista *l);
 

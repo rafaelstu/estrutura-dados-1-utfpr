@@ -40,6 +40,10 @@ void adicionaItemFimLista(Lista *l, int chave) {
 }
 
 void adicionaItemQualquerPosicao(Lista *l, int chave, int posicao) {
+  if (verificaListaCheia(l)) {
+    printf("erro: lista cheia.\n");
+    return;
+  }
   if (posicao > (l->ultimo + 1) || posicao < 0) {
     printf("erro: posicao invalida\n");
     return;
@@ -53,6 +57,41 @@ void adicionaItemQualquerPosicao(Lista *l, int chave, int posicao) {
   novoItem.chave = chave;
 
   l->vetItem[posicao] = novoItem;
+  l->ultimo++;
+}
+
+void ordenaListaPorChave(Lista *l) {
+  int i, j;
+  Item aux;
+
+  for (j = l->ultimo; j > 0; j--) {
+    for (i = 0; i < j; i++) {
+      if (l->vetItem[i].chave > l->vetItem[i + 1].chave) {
+        aux = l->vetItem[i];
+        l->vetItem[i] = l->vetItem[i + 1];
+        l->vetItem[i + 1] = aux;
+      }
+    }
+  }
+}
+
+void adicionaItemOrdenadoPorChave(Lista *l, int chave) {
+  if (verificaListaCheia(l)) {
+    printf("erro: lista cheia.\n");
+    return;
+  }
+
+  int i = l->ultimo;
+
+  while (i >= 0 && l->vetItem[i].chave > chave) {
+    l->vetItem[i + 1] = l->vetItem[i];
+    i--;
+  }
+
+  Item novoItem;
+  novoItem.chave = chave;
+  l->vetItem[i + 1] = novoItem;
+
   l->ultimo++;
 }
 
