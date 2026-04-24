@@ -77,6 +77,22 @@ void adicionaItemQualquerPosicao(Lista *l, int chave, int posicao) {
   l->ultimo++;
 }
 
+void copiaLista(Lista *l1, Lista *l2) {
+  if (!verificaListaVazia(l1)) {
+    printf("erro: primeira lista nao esta vazia\n");
+    return;
+  }
+  if (verificaListaVazia(l2)) {
+    printf("erro: segunda lista esta vazia\n");
+    return;
+  }
+
+  for (int i = 0; i <= l2->ultimo; i++) {
+    l1->vetItem[i] = l2->vetItem[i];
+    l1->ultimo++;
+  }
+}
+
 void ordenaListaPorChave(Lista *l) {
   int i, j;
   Item aux;
@@ -131,6 +147,11 @@ int buscaItemPorChave(Lista *l, int chave) {
   return -1;
 }
 
+Lista *interseccaoLista(Lista *l1, Lista *l2) {
+  Lista *lI;
+
+  return lI;
+}
 void removeItem(Lista *l, int chave) {
   int posicao = buscaItemPorChave(l, chave);
 

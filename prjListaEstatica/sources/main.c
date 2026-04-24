@@ -4,11 +4,12 @@
 
 int main() {
 
-  Lista *l;
+  Lista *l, *lC;
   int vazia, cheia, chave;
 
   printf("criando lista vazia\n");
   l = criaListaVazia();
+  lC = criaListaVazia();
 
   chave = 1;
   adicionaItemFimLista(l, chave);
@@ -44,9 +45,14 @@ int main() {
   chave = 10;
   adicionaItemFimListaComValidacao(l, chave);
 
-  printf("\nitens na lista\n");
+  printf("\nitens na lista 1\n");
   imprimeLista(l);
 
+  copiaLista(lC, l);
+  printf("\nitens na lista copia\n");
+  imprimeLista(lC);
+
   liberaLista(l);
+  liberaLista(lC);
   return 0;
 }
