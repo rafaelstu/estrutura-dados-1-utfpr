@@ -4,7 +4,7 @@
 
 int main() {
 
-  Lista *l, *lC;
+  Lista *l, *lC, *lI;
   int vazia, cheia, chave;
 
   printf("criando lista vazia\n");
@@ -21,6 +21,9 @@ int main() {
   adicionaItemFimLista(l, chave);
   chave = 9;
   adicionaItemFimLista(l, chave);
+
+  copiaLista(lC, l);
+
   chave = 6;
   adicionaItemQualquerPosicao(l, chave, 0);
   ordenaListaPorChave(l);
@@ -48,11 +51,15 @@ int main() {
   printf("\nitens na lista 1\n");
   imprimeLista(l);
 
-  copiaLista(lC, l);
   printf("\nitens na lista copia\n");
   imprimeLista(lC);
 
+  lI = interseccaoLista(l, lC);
+  printf("\nitens intersecção listas\n");
+  imprimeLista(lI);
+
   liberaLista(l);
   liberaLista(lC);
+  liberaLista(lI);
   return 0;
 }

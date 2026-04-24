@@ -149,6 +149,15 @@ int buscaItemPorChave(Lista *l, int chave) {
 
 Lista *interseccaoLista(Lista *l1, Lista *l2) {
   Lista *lI;
+  int i, j;
+
+  lI = criaListaVazia();
+
+  for (i = 0; i <= l1->ultimo; i++) {
+    if (buscaItemPorChave(l2, l1->vetItem[i].chave) != -1) {
+      adicionaItemFimLista(lI, l1->vetItem[i].chave);
+    }
+  }
 
   return lI;
 }
