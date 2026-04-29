@@ -4,7 +4,7 @@
 
 int main() {
 
-  Lista *l, *lC, *lI;
+  Lista *l, *lC, *lI, *lU;
   int vazia, cheia, chave;
 
   printf("criando lista vazia\n");
@@ -13,15 +13,16 @@ int main() {
 
   chave = 1;
   adicionaItemFimLista(l, chave);
-  chave = 2;
+  chave = 12;
   adicionaItemFimLista(l, chave);
-  chave = 3;
+  chave = 63;
   adicionaItemFimLista(l, chave);
   chave = 7;
   adicionaItemFimLista(l, chave);
   chave = 9;
   adicionaItemFimLista(l, chave);
 
+  printf("\ncopiando lista\n");
   copiaLista(lC, l);
 
   chave = 6;
@@ -31,11 +32,11 @@ int main() {
   printf("\nitens na lista\n");
   imprimeLista(l);
 
-  chave = 8;
+  chave = 18;
   printf("adicionando chave %d\n", chave);
   adicionaItemOrdenadoPorChave(l, chave);
 
-  chave = 5;
+  chave = 15;
   printf("adicionando chave %d\n", chave);
   adicionaItemOrdenadoPorChave(l, chave);
 
@@ -58,8 +59,16 @@ int main() {
   printf("\nitens intersecção listas\n");
   imprimeLista(lI);
 
+  printf("\nunindo listas\n");
+
+  lU = uniaoLista(l, lC);
+  ordenaListaPorChave(lU);
+  printf("\nitens uniao listas\n");
+  imprimeLista(lU);
+
   liberaLista(l);
   liberaLista(lC);
   liberaLista(lI);
+  liberaLista(lU);
   return 0;
 }

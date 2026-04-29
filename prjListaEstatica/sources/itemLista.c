@@ -161,6 +161,26 @@ Lista *interseccaoLista(Lista *l1, Lista *l2) {
 
   return lI;
 }
+
+Lista *uniaoLista(Lista *l1, Lista *l2) {
+  Lista *lU;
+  int i, j;
+
+  lU = criaListaVazia();
+
+  for (i = 0; i <= l1->ultimo; i++) {
+
+    adicionaItemFimListaComValidacao(lU, l1->vetItem[i].chave);
+  }
+
+  for (i = 0; i <= l2->ultimo; i++) {
+
+    adicionaItemFimListaComValidacao(lU, l2->vetItem[i].chave);
+  }
+
+  return lU;
+}
+
 void removeItem(Lista *l, int chave) {
   int posicao = buscaItemPorChave(l, chave);
 
