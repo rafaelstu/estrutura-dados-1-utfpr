@@ -129,7 +129,12 @@ void desenfileira(Fila *f) {
 }
 
 void imprimeItem(Item item) {
-  printf("cód rastreio: %d\n", item.codRastreio);
+  printf("\ncód rastreio: %d\n", item.codRastreio);
+  if (validaChecksum(item.codRastreio)) {
+    printf("código de rastreio válido\n");
+  } else {
+    printf("código de rastreio inválido\n");
+  }
   printf("altura (cm): %.2f\n", item.altura);
   printf("comprimento (cm): %.2f\n", item.comprimento);
   printf("largura (cm): %.2f\n", item.largura);
