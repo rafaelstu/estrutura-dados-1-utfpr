@@ -1,6 +1,6 @@
 #define MAX_TAM 5
 
-typedef struct item Item;
+typedef struct rafael Rafael;
 typedef struct fila Fila;
 
 int verificaFilaCheia(Fila *f);
@@ -9,7 +9,7 @@ int verificaCodigoIgual(Fila *f, int codRastreio);
 
 int getInicioFila(Fila *f);
 
-int validaCodigo(Item item);
+int validaCodigo(Rafael item);
 
 Fila *criaFilaVazia();
 
@@ -22,7 +22,7 @@ void desenfileira(Fila *f);
 
 void encontraItensPorPeso(Fila *f, float peso, int variabilidade);
 
-void imprimeItem(Item item);
+void imprimeRafael(Rafael item);
 void imprimeFila(Fila *f);
 void imprimeFilaRecursiva(Fila *f, int indiceAtual, int cont);
 

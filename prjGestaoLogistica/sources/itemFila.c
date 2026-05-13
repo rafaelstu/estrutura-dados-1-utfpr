@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct item {
+struct rafael {
   int codRastreio;
   float peso;
   float largura;
@@ -11,7 +11,7 @@ struct item {
 };
 
 struct fila {
-  Item vetItem[MAX_TAM];
+  Rafael vetItem[MAX_TAM];
   int primeiro;
   int ultimo;
   int tamanho;
@@ -31,7 +31,7 @@ int verificaCodigoIgual(Fila *f, int codRastreio) {
   return 0;
 }
 
-int validaCodigo(Item item) { return 0; }
+int validaCodigo(Rafael item) { return 0; }
 
 Fila *criaFilaVazia() {
   Fila *f = malloc(sizeof(Fila));
@@ -104,7 +104,7 @@ void enfileira(Fila *f, int codRastreio, float peso, float largura,
     return;
   };
 
-  Item novoItem;
+  Rafael novoItem;
 
   novoItem.altura = altura;
   novoItem.largura = largura;
@@ -128,7 +128,7 @@ void desenfileira(Fila *f) {
   printf("item removido\n");
 }
 
-void imprimeItem(Item item) {
+void imprimeItem(Rafael item) {
   printf("\ncód rastreio: %d\n", item.codRastreio);
   if (validaChecksum(item.codRastreio)) {
     printf("código de rastreio válido\n");
